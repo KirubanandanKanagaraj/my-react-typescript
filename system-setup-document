@@ -1,0 +1,20 @@
+# Terminal:
+
+--> This is mainly for the mac machine
+1. Install iTerm2.
+2. Follow the instruction on this video to install the theme and color, https://www.youtube.com/watch?v=D2PSsnqgBiw
+This helps good visual appeal and readability for of the termnial
+
+# Visual studio code:
+Prefered code editor
+--> Important plugins
+
+1. Prettier - Code Formatter
+2. Batch Rename
+3. Code spell checker
+4. ESLint
+5. Jest, Jest Runner
+6. JSON Beautify
+7. Intellisense: NPM, Path
+8. Peacock - Workspace color change
+9. TODO: Highlight
