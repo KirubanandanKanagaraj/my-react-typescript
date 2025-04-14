@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./index.css";
 
 type TodoProps = {
-    text: string;
+    taskName: string;
     id: number;
 }
 
@@ -17,7 +17,7 @@ export const Todo = () => {
   const handleSubmit = () => {
     setTodos((todos) =>
       todos.concat({
-        text: input,
+        taskName: input,
         id: generateId(),
       })
     );
@@ -39,7 +39,7 @@ export const Todo = () => {
       <button onClick={handleSubmit}>Submit</button>
 
       <ul className="todos-list">
-        {todos.map(({ text, id }) => (
+        {todos.map(({ taskName: text, id }) => (
           <li key={id} className="todo">
             <span>{text}</span>
             <button className="close" onClick={() => removeTodo(id)}>
