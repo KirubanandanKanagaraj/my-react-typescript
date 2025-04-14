@@ -1,0 +1,2 @@
+---> A normal todo app 
+---> Typescirpt and ReactJs
