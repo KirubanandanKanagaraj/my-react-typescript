@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.css";
+import { addToTodoList, fetchTodoList } from "./api/todos";
 
 type TodoProps = {
     taskName: string;
@@ -14,13 +15,18 @@ export const Todo = () => {
   const [todos, setTodos] = useState<TodoProps[]>([]);
   const [input, setInput] = useState("");
 
-  const handleSubmit = () => {
-    setTodos((todos) =>
-      todos.concat({
-        taskName: input,
-        id: generateId(),
-      })
-    );
+  useEffect(() => {
+    fetchTodoList().then(setTodos).catch(console.error);
+  }, []);
+
+  const handleSubmit = async() => {
+    const newTodo = {
+      taskName: input,
+      id: generateId(),
+    }
+    await addToTodoList(newTodo);
+    const updatedItems = await fetchTodoList();
+    setTodos(updatedItems);
     setInput("");
   };
 
