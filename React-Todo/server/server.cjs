@@ -22,10 +22,24 @@ async function run() {
       res.json(todoList);
     });
 
+    // GET document by ID
+    app.get("/api/todos/:id", async (req, res) => {
+      const id = req.params.id;
+      const todo = await collection.findOne({ _id: new ObjectId(id) });
+      res.json(todo);
+    });
+
     // POST new document
     app.post("/api/todos", async (req, res) => {
       const newTodo = req.body;
       const result = await collection.insertOne(newTodo);
+      res.json(result);
+    });
+
+    // DELETE document by ID
+    app.delete("/api/todos/:id", async (req, res) => {
+      const id = req.params.id;
+      const result = await collection.deleteOne({ _id: new ObjectId(id) });
       res.json(result);
     });
 
@@ -38,30 +52,3 @@ async function run() {
 }
 
 run();
-
-// const { MongoClient } = require("mongodb");
-// require("dotenv").config({ path: "./config.env" });
-
-// async function main() {
-//   const Db = process.env.ATLAS_URI;
-//   const collectionName = process.env.COLLECTION_NAME;
-//   const client = new MongoClient(Db);
-
-//   try {
-//     await client.connect();
-//     console.log("Connected to MongoDB Atlas");
-
-//     const collections = await client.db(collectionName).collections();
-//     collections.forEach((collection) => {
-//       console.log(`Collection: ${collection.s.namespace.collection}`);
-//     });
-//   } catch (error) {
-//     console.error("Error connecting to MongoDB Atlas:", error);
-//     throw error;
-//   } finally {
-//     await client.close();
-//     console.log("Connection closed");
-//   }
-// }
-
-// main();

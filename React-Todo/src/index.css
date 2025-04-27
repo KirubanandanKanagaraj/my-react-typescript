@@ -52,7 +52,20 @@ button {
   font-family: sans-serif;
 }
 
+.todo.completed {
+  background-color: aquamarine;
+}
+
+.todo.completed span {
+  text-decoration: line-through;
+}
+
 .close {
   padding: 5px 10px;
   cursor: pointer;
+}
+
+input.todo-checkbox{
+  width: fit-content;
+  max-width: 50px;
 }
